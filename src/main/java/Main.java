@@ -1,6 +1,5 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
@@ -39,8 +38,8 @@ public class Main {
         }
     }
 
-    private static <T> String listToJson(List<Employee> list) {
-        Type listType = new TypeToken<List<T>>() {}.getType();
+    private static String listToJson(List<Employee> list) {
+        Type listType = list.getClass();
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         return gson.toJson(list, listType);
